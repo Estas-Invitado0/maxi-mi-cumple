@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Halloween - Maximiliano</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#000;
+    color:white;
+
+    font-family:'Montserrat',sans-serif;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* =========================================
+   PARTÍCULAS LUMINOSAS
+========================================= */
+
+.particles{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+.particles span{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    background:#d4af37;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 10px #d4af37,
+    0 0 20px #d4af37;
+
+    animation:float 10s linear infinite;
+
+    opacity:0;
+
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120px) scale(1.5);
+        opacity:0;
+    }
+
+}
+
+/* =========================================
+   CONTENEDOR
+========================================= */
+
+.container{
+
+    width:100%;
+    max-width:560px;
+
+    margin:auto;
+
+    padding:30px 18px 100px;
+
+    text-align:center;
+
+}
+
+/* =========================================
+   TITULOS
+========================================= */
+
+.invited{
+
+    letter-spacing:7px;
+
+    font-size:13px;
+
+    color:white;
+
+    margin-top:20px;
+
+}
+
+.name{
+
+    margin-top:25px;
+
+    font-size:42px;
+
+    line-height:1.2;
+
+    font-family:'Cinzel',serif;
+
+    background:linear-gradient(
+    to bottom,
+    #fff4c3,
+    #d4af37,
+    #8c6518);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+
+.gold-line{
+
+    width:80%;
+
+    height:4px;
+
+    margin:30px auto;
+
+    background:linear-gradient(
+    to right,
+    transparent,
+    #d4af37,
+    #fff3c6,
+    #d4af37,
+    transparent);
+
+}
+
+/* =========================================
+   FOTO
+========================================= */
+
+.photo-frame{
+
+    width:250px;
+    height:250px;
+
+    margin:40px auto 90px;
+
+    border-radius:50%;
+
+    padding:5px;
+
+    background:linear-gradient(
+    135deg,
+    #7d5c14,
+    #f7df88,
+    #8c6518);
+
+    box-shadow:
+    0 0 30px rgba(212,175,55,0.35);
+
+}
+
+.photo-frame img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    display:block;
+
+}
+
+/* =========================================
+   PLAYER
+========================================= */
+
+.audio-player {
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  flex-direction:column;
+
+  width:100%;
+  max-width:360px;
+
+  margin:auto;
+
+}
+
+.controls {
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:15px;
+
+  gap:15px;
+
+}
+
+/* PLAY */
+
+.play-pause-btn {
+
+  border:none;
+
+  cursor:pointer;
+
+  border-radius:50%;
+
+  width:65px;
+  height:65px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:linear-gradient(
+  145deg,
+  #ffd86b,
+  #efb540,
+  #b67900);
+
+  box-shadow:
+  0 0 10px rgba(0,0,0,0.5);
+
+  transition:transform 0.2s ease;
+
+}
+
+.play-pause-btn:hover {
+
+  transform:scale(1.1);
+
+}
+
+.play-pause-btn img {
+
+  width:32px;
+  height:32px;
+
+}
+
+/* SKIP */
+
+.skip-btn {
+
+  background:none;
+
+  border:none;
+
+  cursor:pointer;
+
+}
+
+.skip-btn img {
+
+  width:30px;
+  height:30px;
+
+  filter:
+  brightness(0)
+  saturate(100%)
+  invert(80%)
+  sepia(56%)
+  saturate(596%)
+  hue-rotate(357deg)
+  brightness(95%)
+  contrast(92%);
+
+  transition:transform 0.2s ease;
+
+}
+
+.skip-btn:hover img {
+
+  transform:scale(1.2);
+
+}
+
+/* PROGRESS */
+
+.progress-container {
+
+  width:100%;
+
+  background:#222;
+
+  border-radius:5px;
+
+  height:10px;
+
+  cursor:pointer;
+
+  margin-top:10px;
+
+  position:relative;
+
+}
+
+.progress {
+
+  background:linear-gradient(
+  90deg,
+  #ffd86b,
+  #efb540,
+  #b67900);
+
+  height:100%;
+
+  width:0;
+
+  border-radius:5px;
+
+  position:relative;
+
+}
+
+.progress-indicator {
+
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:14px;
+  height:14px;
+
+  background:linear-gradient(
+  145deg,
+  #ffd86b,
+  #efb540,
+  #b67900);
+
+  border-radius:50%;
+
+  left:0;
+
+  transition:left 0.1s ease;
+
+  box-shadow:
+  0 0 6px rgba(0,0,0,0.6);
+
+}
+
+/* TIME */
+
+.time-info {
+
+  font-size:14px;
+
+  color:#efb540;
+
+  margin-top:8px;
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .audio-player{
+
+    max-width:100%;
+
+  }
+
+}
+
+/* =========================================
+   SECCIONES
+========================================= */
+
+.section{
+
+    margin-top:75px;
+
+}
+
+.section-title{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+
+    font-size:34px;
+
+    line-height:1.3;
+
+    margin-bottom:15px;
+
+    font-family:'Cinzel',serif;
+
+    background:linear-gradient(
+    to bottom,
+    #fff4c0,
+    #d4af37,
+    #8a6518);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+
+.section-icon{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:linear-gradient(
+    135deg,
+    #8a6518,
+    #f6df89,
+    #b18422);
+    box-shadow:
+    0 0 18px rgba(212,175,55,0.2);
+    transition:transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+    opacity:0;
+    transform:translateY(14px) scale(0.95);
+}
+
+.section-icon.visible{
+
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.section-icon:hover,
+.section-icon:focus-visible{
+
+    transform:translateY(-3px) scale(1.08);
+    box-shadow:
+    0 0 24px rgba(212,175,55,0.35);
+}
+
+.section-icon.animate{
+
+    animation:icon-pop 0.55s ease;
+}
+
+@keyframes icon-pop{
+
+    0%{transform:translateY(18px) scale(0.9); opacity:0;}
+    60%{transform:translateY(-6px) scale(1.08); opacity:1;}
+    100%{transform:translateY(0) scale(1); opacity:1;}
+}
+
+.section-icon svg{
+
+    width:20px;
+    height:20px;
+    fill:#050505;
+}
+
+.section-sub{
+
+    color:#d4af37;
+
+    font-size:18px;
+
+    margin-bottom:35px;
+
+}
+
+.info{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:#eee;
+
+}
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.countdown{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+
+}
+
+.time-box{
+
+    width:82px;
+    height:82px;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+    135deg,
+    #f6d775,
+    #d4af37,
+    #9a721d);
+
+    padding:2px;
+
+    box-shadow:
+    0 0 15px rgba(212,175,55,0.3);
+
+}
+
+.time-inner{
+
+    width:100%;
+    height:100%;
+
+    border-radius:16px;
+
+    background:#050505;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.time-number{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#f6de95;
+
+}
+
+.time-label{
+
+    font-size:10px;
+
+    color:#d4af37;
+
+    margin-top:4px;
+
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.gold-btn{
+
+    display:inline-block;
+
+    width:100%;
+    max-width:330px;
+
+    padding:18px 22px;
+
+    margin-top:20px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-family:'Cinzel',serif;
+
+    color:black;
+
+    background:linear-gradient(
+    135deg,
+    #8a6518,
+    #f6df89,
+    #b18422);
+
+    box-shadow:
+    0 0 20px rgba(212,175,55,0.25);
+
+    transition:0.3s;
+
+}
+
+.gold-btn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/* =========================================
+   DESPLEGABLE
+========================================= */
+
+.dropdown-content{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:0.5s ease;
+
+}
+
+.dropdown-content.active{
+
+    max-height:500px;
+
+    margin-top:25px;
+
+}
+
+.dropdown-inner{
+
+    background:rgba(255,255,255,0.03);
+
+    border:1px solid rgba(212,175,55,0.2);
+
+    border-radius:30px;
+
+    padding:35px 25px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.dropdown-inner p{
+
+    color:#ddd;
+
+    line-height:1.7;
+
+}
+
+.dropdown-inner h2{
+
+    font-size:52px;
+
+    background:linear-gradient(
+    to bottom,
+    #fff3c4,
+    #d4af37,
+    #8f6819);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+
+.dropdown-inner span{
+
+    color:#d4af37;
+
+    font-size:18px;
+
+}
+
+.alias-box{
+
+    margin:20px auto 0;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    width:auto;
+
+    padding:14px 22px;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+    135deg,
+    #8a6518,
+    #f7dd86,
+    #8a6518);
+
+    color:black;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.alias-box .alias-value{
+
+    display:inline-block;
+    color:#050505;
+
+}
+
+.copy-btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.95);
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.copy-btn:hover{
+
+    transform:scale(1.05);
+    box-shadow:0 0 12px rgba(212,175,55,0.22);
+}
+
+.copy-btn svg{
+
+    width:16px;
+    height:16px;
+    fill:#8a6518;
+}
+
+.copy-btn.copied{
+
+    background:#d4af37;
+}
+
+.copy-btn.copied svg{
+
+    fill:#050505;
+}
+
+/* =========================================
+   FINAL
+========================================= */
+
+.final{
+
+    margin-top:90px;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    font-family:'Cinzel',serif;
+
+    color:white;
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+    .name{
+
+        font-size:32px;
+
+    }
+
+    .photo-frame{
+
+        width:220px;
+        height:220px;
+
+        margin-bottom:100px;
+
+    }
+
+    .section-title{
+
+        font-size:30px;
+
+    }
+
+    .music-card{
+
+        padding:22px;
+
+    }
+
+}
+
+/* =========================================
+   HALLOWEEN · FUCSIA, NARANJA Y NEGRO
+========================================= */
+
+body{
+    background:
+    radial-gradient(ellipse at 12% 18%, rgba(255,35,173,0.15), transparent 35%),
+    radial-gradient(ellipse at 88% 42%, rgba(255,139,43,0.11), transparent 32%),
+    radial-gradient(ellipse at 50% 85%, rgba(255,35,173,0.08), transparent 38%),
+    #050307;
+}
+
+.particles span{
+    background:#ff43bb;
+    box-shadow:0 0 10px #ff43bb, 0 0 22px rgba(255,67,187,0.75);
+}
+
+.particles span:nth-child(3n){
+    background:#ff9b3d;
+    box-shadow:0 0 10px #ff9b3d, 0 0 22px rgba(255,142,48,0.72);
+}
+
+.particles span:nth-child(4n){
+    width:6px;
+    height:6px;
+    box-shadow:0 0 12px #ffb7eb, 0 0 28px rgba(255,67,187,0.95);
+}
+
+.name,
+.section-title,
+.dropdown-inner h2{
+    background:linear-gradient(135deg, #ffe2f5 5%, #ff4dc4 38%, #ff9a36 70%, #ffe2b8 95%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 12px rgba(255,64,190,0.2));
+}
+
+.gold-line{
+    background:linear-gradient(90deg, transparent, #ff40b9, #f4c8ff, #ff9a36, transparent);
+    box-shadow:0 0 14px rgba(255,64,185,0.38);
+}
+
+.photo-frame{
+    position:relative;
+    isolation:isolate;
+    background:linear-gradient(135deg, #ff9a36, #ff40b9, #f8d7ff, #ffd08a);
+    box-shadow:0 0 28px rgba(255,64,185,0.5), 0 0 42px rgba(255,142,48,0.24);
+}
+
+.photo-frame::before{
+    content:'';
+    position:absolute;
+    inset:-5px;
+    z-index:-1;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        transparent 75%,
+        rgba(255,57,190,0.12) 82%,
+        rgba(255,74,198,0.86) 89%,
+        rgba(255,183,91,0.78) 94%,
+        transparent 100%
+    );
+    opacity:0.58;
+    will-change:opacity;
+    animation:aura-pulse 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes aura-pulse{
+    from{opacity:0.38;}
+    to{opacity:0.85;}
+}
+
+.invitation-message{
+    position:relative;
+    max-width:430px;
+    margin:0 auto 70px;
+    padding:28px 22px;
+    border:1px solid rgba(255,91,201,0.72);
+    border-radius:24px;
+    background:linear-gradient(145deg, rgba(255,50,180,0.11), rgba(255,137,38,0.08), rgba(8,5,12,0.92));
+    box-shadow:0 0 24px rgba(255,51,184,0.17), inset 0 0 22px rgba(255,142,48,0.06);
+}
+
+.invitation-message::before{
+    content:'';
+    position:absolute;
+    inset:7px;
+    border:1px solid rgba(255,173,82,0.32);
+    border-radius:18px;
+    pointer-events:none;
+}
+
+.invitation-message p{
+    position:relative;
+    color:#ffd9f3;
+    font-family:'Cinzel',serif;
+    font-size:clamp(22px, 6vw, 30px);
+    line-height:1.45;
+    text-shadow:0 0 16px rgba(255,64,185,0.45);
+}
+
+.invitation-message span{
+    display:block;
+    position:relative;
+    margin-top:14px;
+    color:#ffbd70;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-shadow:0 0 12px rgba(255,145,48,0.42);
+}
+
+.section-icon{
+    background:linear-gradient(135deg, #ff9d3f, #ff4fc5, #eecbff);
+    box-shadow:0 0 18px rgba(255,64,185,0.25);
+}
+
+.section-icon:hover,
+.section-icon:focus-visible{
+    box-shadow:0 0 24px rgba(255,153,54,0.42);
+}
+
+.section-sub,
+.time-label{
+    color:#ffc078;
+}
+
+.countdown .time-box{
+    background:linear-gradient(135deg, #ff4bc1, #c52791, #ff9c37);
+    box-shadow:0 0 18px rgba(255,64,185,0.23), 0 0 24px rgba(255,145,48,0.16);
+}
+
+.time-number{
+    color:#ffe3f6;
+}
+
+.play-pause-btn,
+.progress,
+.progress-indicator{
+    background:linear-gradient(145deg, #ff66cd, #e82da6, #ff9c37);
+}
+
+.skip-btn img{
+    filter:brightness(0) saturate(100%) invert(69%) sepia(79%) saturate(1050%) hue-rotate(337deg) brightness(103%) contrast(102%);
+}
+
+.time-info{
+    color:#ff8bd8;
+}
+
+.progress-container{
+    background:#241423;
+}
+
+.gold-btn{
+    color:#100713;
+    background:linear-gradient(135deg, #ff9f42, #f7d8ff 48%, #ff4fc3);
+    box-shadow:0 0 20px rgba(255,64,185,0.22), 0 0 24px rgba(255,148,49,0.16);
+}
+
+.gold-btn:hover{
+    box-shadow:0 0 28px rgba(255,64,185,0.38), 0 0 32px rgba(255,148,49,0.28);
+}
+
+.photo-carousel{
+    width:min(100%, 430px);
+    margin:0 auto;
+    padding:12px;
+    border:1px solid rgba(255,91,201,0.7);
+    border-radius:26px;
+    background:linear-gradient(145deg, rgba(255,50,180,0.12), rgba(255,137,38,0.08) 52%, rgba(8,5,12,0.96));
+    box-shadow:0 0 24px rgba(255,51,184,0.2), 0 0 34px rgba(255,142,48,0.1), inset 0 0 22px rgba(255,142,48,0.05);
+}
+
+.carousel-frame{
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(255,177,111,0.58);
+    border-radius:18px;
+    background:#100912;
+}
+
+.carousel-track{
+    display:flex;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+}
+
+.carousel-track::-webkit-scrollbar{
+    display:none;
+}
+
+.carousel-track:focus-visible{
+    outline:2px solid #ffbd70;
+    outline-offset:-3px;
+}
+
+.carousel-slide{
+    position:relative;
+    flex:0 0 100%;
+    aspect-ratio:4 / 5;
+    margin:0;
+    overflow:hidden;
+    scroll-snap-align:start;
+    background:
+        radial-gradient(ellipse at center, rgba(255,63,184,0.16), rgba(255,137,42,0.08) 48%, transparent 76%),
+        #100912;
+}
+
+.carousel-slide img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.carousel-slide--portrait img{
+    object-fit:cover;
+    object-position:center 24%;
+}
+
+.dropdown-inner{
+    border-color:rgba(255,74,195,0.27);
+}
+
+.dropdown-inner span{
+    color:#ffc078;
+}
+
+.alias-box{
+    background:linear-gradient(135deg, #ff9f42, #f7d8ff 48%, #ff4fc3);
+}
+
+.alias-box .alias-value{
+    color:#100713;
+}
+
+.copy-btn svg{
+    fill:#be278e;
+}
+
+.copy-btn.copied{
+    background:#ff9f42;
+}
+
+body.invitation-locked{
+    overflow:hidden;
+}
+
+body.invitation-locked .particles,
+body.invitation-locked .halloween-decor{
+    display:none;
+}
+
+.envelope-overlay{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    display:grid;
+    place-items:center;
+    padding:clamp(12px, 3vh, 24px);
+    overflow:hidden;
+    background:
+        radial-gradient(ellipse at 50% 42%, rgba(255,39,173,0.17), transparent 42%),
+        radial-gradient(ellipse at 85% 82%, rgba(255,139,43,0.11), transparent 34%),
+        #070409;
+    transition:opacity 0.8s ease, visibility 0s linear 1.35s;
+}
+
+.envelope-overlay.opening{
+    opacity:0;
+    visibility:hidden;
+}
+
+.envelope-invitation{
+    width:min(100%, 440px);
+    max-height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(8px, 2.5vh, 24px);
+    text-align:center;
+    transition:opacity 0.45s ease 0.75s, transform 0.65s cubic-bezier(0.2, 0.7, 0.25, 1) 0.75s;
+}
+
+.envelope-invitation.opening{
+    opacity:0;
+    transform:translateY(-18px) scale(0.94);
+}
+
+.envelope-heading{
+    color:#ffdff4;
+    font-family:'Cinzel',serif;
+    font-size:clamp(19px, 5vw, 25px);
+    letter-spacing:2px;
+    text-shadow:0 0 18px rgba(255,65,190,0.5);
+}
+
+.envelope-trigger{
+    width:min(78vw, 350px, max(170px, calc((100dvh - 150px) * 1.55)));
+    padding:0;
+    border:0;
+    background:none;
+    color:inherit;
+    cursor:pointer;
+    perspective:1000px;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.envelope-trigger:focus-visible{
+    outline:2px solid #ffbd70;
+    outline-offset:12px;
+    border-radius:12px;
+}
+
+.envelope-art{
+    position:relative;
+    display:block;
+    width:100%;
+    aspect-ratio:1.55;
+    border:1px solid rgba(255,112,210,0.78);
+    border-radius:8px;
+    background:linear-gradient(145deg, #57163f, #210d23 78%);
+    box-shadow:0 0 22px rgba(255,46,183,0.36), 0 14px 35px rgba(0,0,0,0.45);
+    transform-style:preserve-3d;
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.envelope-trigger:hover .envelope-art{
+    box-shadow:0 0 32px rgba(255,46,183,0.52), 0 18px 40px rgba(0,0,0,0.5);
+}
+
+.envelope-paper{
+    position:absolute;
+    z-index:2;
+    left:7%;
+    top:8%;
+    width:86%;
+    height:84%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:1px solid rgba(255,210,243,0.85);
+    border-radius:4px;
+    background:linear-gradient(160deg, #fff0fa, #e8c9e2);
+    color:#39122f;
+    box-shadow:0 2px 12px rgba(0,0,0,0.25);
+    transform:translateY(0);
+    transition:transform 0.9s cubic-bezier(0.2,0.75,0.25,1) 0.25s;
+}
+
+.envelope-paper span:first-child{
+    font-family:'Cinzel',serif;
+    font-size:clamp(18px, 5vw, 25px);
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.envelope-paper span:last-child{
+    color:#9a2677;
+    font-size:clamp(10px, 3vw, 13px);
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.envelope-flap{
+    position:absolute;
+    z-index:4;
+    inset:0 0 auto;
+    height:77%;
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
+    background:linear-gradient(150deg, #ff55c2, #8d236f 56%, #39132f);
+    filter:drop-shadow(0 4px 5px rgba(0,0,0,0.24));
+    transform-origin:50% 0;
+    backface-visibility:hidden;
+    transition:transform 0.72s ease, z-index 0s 0.72s;
+}
+
+.envelope-pocket{
+    position:absolute;
+    z-index:3;
+    inset:0;
+    clip-path:polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+    background:linear-gradient(145deg, #811e64 0%, #3b1235 50%, #a62d80 100%);
+}
+
+.envelope-seal{
+    position:absolute;
+    z-index:5;
+    left:50%;
+    top:48%;
+    display:block;
+    width:clamp(62px, 18vw, 76px);
+    height:auto;
+    transform:translate(-50%, -50%);
+    filter:drop-shadow(0 0 12px rgba(255,132,43,0.72));
+    transition:opacity 0.2s ease, transform 0.35s ease;
+}
+
+.envelope-invitation.opening .envelope-paper{
+    z-index:6;
+    transform:translateY(-48%) scale(1.06);
+    transition-duration:0.8s;
+}
+
+.envelope-invitation.opening .envelope-flap{
+    z-index:1;
+    transform:rotateX(180deg);
+    transition-duration:0.68s;
+}
+
+.envelope-invitation.opening .envelope-art{
+    animation:envelope-release 0.72s ease-in 0.42s forwards;
+}
+
+@keyframes envelope-release{
+    to{transform:translateY(-14px) scale(1.04); opacity:0.18;}
+}
+
+.envelope-invitation.opening .envelope-seal{
+    opacity:0;
+    transform:translate(-50%, -50%) scale(0.7);
+}
+
+.envelope-instruction{
+    color:#ffc078;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:3px;
+    text-shadow:0 0 12px rgba(255,145,48,0.46);
+}
+
+.audio-status{
+    min-height:1.4em;
+    margin-top:8px;
+    color:#ffc7eb;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* Prueba visual de Halloween: decoración en capas, sin bloquear la interacción. */
+.container{
+    position:relative;
+    z-index:1;
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.85s ease 0.38s, transform 0.9s cubic-bezier(0.2, 0.7, 0.25, 1) 0.38s;
+}
+
+.container.is-revealed{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.halloween-decor{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.halloween-decor::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(ellipse at 10% 32%, rgba(255,30,173,0.18), transparent 40%),
+        radial-gradient(ellipse at 90% 67%, rgba(255,130,38,0.14), transparent 42%);
+    opacity:0.6;
+    will-change:opacity;
+    animation:fog-pulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes fog-pulse{
+    from{opacity:0.35;}
+    to{opacity:0.85;}
+}
+
+.spiderweb{
+    position:absolute;
+    width:clamp(110px, 22vw, 230px);
+    height:clamp(110px, 22vw, 230px);
+    fill:none;
+    stroke:#ff63cb;
+    stroke-width:1.2;
+    opacity:0.42;
+    filter:drop-shadow(0 0 5px rgba(255,57,190,0.8));
+}
+
+.spiderweb--top{
+    top:0;
+    left:0;
+}
+
+.spiderweb--bottom{
+    right:0;
+    bottom:0;
+    transform:rotate(180deg);
+    opacity:0.3;
+}
+
+.bat{
+    position:absolute;
+    width:clamp(34px, 6vw, 58px);
+    height:auto;
+    display:block;
+    object-fit:contain;
+    opacity:0.88;
+    filter:drop-shadow(0 0 9px rgba(255,48,183,0.52));
+    animation:bat-drift 8s ease-in-out infinite;
+}
+
+.bat--one{
+    top:17%;
+    right:14%;
+}
+
+.bat--two{
+    top:36%;
+    left:8%;
+    width:clamp(28px, 4.5vw, 42px);
+    animation-delay:-3s;
+}
+
+.bat--three{
+    top:63%;
+    right:7%;
+    width:clamp(24px, 3.7vw, 35px);
+    animation-delay:-5s;
+}
+
+@keyframes bat-drift{
+    0%, 100%{transform:translate3d(0, 0, 0) rotate(-3deg) scale(1);}
+    50%{transform:translate3d(-8px, -6px, 0) rotate(3deg) scale(1.04);}
+}
+
+.candle-set{
+    position:absolute;
+    bottom:22px;
+    display:flex;
+    align-items:flex-end;
+    gap:9px;
+    opacity:0.78;
+}
+
+.candle-set--left{
+    left:clamp(12px, 5vw, 52px);
+}
+
+.candle-set--right{
+    right:clamp(12px, 5vw, 52px);
+}
+
+.candle{
+    position:relative;
+    width:13px;
+    height:58px;
+    border-radius:5px 5px 3px 3px;
+    background:linear-gradient(90deg, #421334, #f35ac2 45%, #702052);
+    box-shadow:inset 0 0 7px rgba(255,210,247,0.3), 0 0 15px rgba(255,45,181,0.35);
+}
+
+.candle:nth-child(2){
+    height:43px;
+}
+
+.candle::before{
+    content:'';
+    position:absolute;
+    width:9px;
+    height:15px;
+    left:2px;
+    top:-18px;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    background:radial-gradient(ellipse at 55% 65%, #fff9ff 0 12%, #ffe2a4 28%, #ff8a24 66%, rgba(255,118,28,0) 76%);
+    filter:drop-shadow(0 0 6px #ff9b3d) drop-shadow(0 0 14px rgba(255,126,34,0.8));
+    transform-origin:50% 100%;
+    animation:flame-flicker 1.35s ease-in-out infinite alternate;
+}
+
+.candle::after{
+    content:'';
+    position:absolute;
+    width:3px;
+    height:5px;
+    left:5px;
+    top:-3px;
+    border-radius:2px;
+    background:#ffd6f4;
+    box-shadow:0 -2px 8px #ff58c5;
+}
+
+@keyframes flame-flicker{
+    from{transform:rotate(-45deg) scale(0.92, 1);}
+    to{transform:rotate(-39deg) scale(1.08, 0.92);}
+}
+
+@media(prefers-reduced-motion:reduce){
+    *, *::before, *::after{
+        animation-duration:0.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+    }
+
+    .envelope-overlay,
+    .envelope-invitation,
+    .envelope-art,
+    .envelope-paper,
+    .envelope-flap,
+    .envelope-seal,
+    .container{
+        transition-duration:0.01ms !important;
+        transition-delay:0s !important;
+    }
+
+    .envelope-invitation.opening .envelope-art{
+        animation:none;
+    }
+}
+
+</style>
+</head>
+
+<body class="invitation-locked">
+
+<!-- =========================================
+     PARTICULAS
+========================================= -->
+
+<div class="particles">
+
+<span style="left:5%; animation-delay:0s;"></span>
+<span style="left:15%; animation-delay:2s;"></span>
+<span style="left:25%; animation-delay:4s;"></span>
+<span style="left:35%; animation-delay:1s;"></span>
+<span style="left:45%; animation-delay:3s;"></span>
+<span style="left:55%; animation-delay:5s;"></span>
+<span style="left:65%; animation-delay:2s;"></span>
+<span style="left:75%; animation-delay:6s;"></span>
+<span style="left:85%; animation-delay:1s;"></span>
+<span style="left:95%; animation-delay:4s;"></span>
+
+<span style="left:10%; animation-delay:7s;"></span>
+<span style="left:30%; animation-delay:8s;"></span>
+<span style="left:50%; animation-delay:9s;"></span>
+<span style="left:70%; animation-delay:10s;"></span>
+<span style="left:90%; animation-delay:11s;"></span>
+
+</div>
+
+<div class="halloween-decor" aria-hidden="true">
+    <svg class="spiderweb spiderweb--top" viewBox="0 0 220 220">
+        <path d="M0 0L220 0M0 0L220 55M0 0L220 110M0 0L220 165M0 0L165 220M0 0L110 220M0 0L55 220M0 0L0 220"/>
+        <path d="M0 36Q36 36 36 0M0 73Q73 73 73 0M0 110Q110 110 110 0M0 147Q147 147 147 0M0 184Q184 184 184 0"/>
+    </svg>
+    <svg class="spiderweb spiderweb--bottom" viewBox="0 0 220 220">
+        <path d="M0 0L220 0M0 0L220 55M0 0L220 110M0 0L220 165M0 0L165 220M0 0L110 220M0 0L55 220M0 0L0 220"/>
+        <path d="M0 36Q36 36 36 0M0 73Q73 73 73 0M0 110Q110 110 110 0M0 147Q147 147 147 0M0 184Q184 184 184 0"/>
+    </svg>
+    <img class="bat bat--one" src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/Murcielago.neon.magenta.resplandeciente.png" alt="">
+    <img class="bat bat--two" src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/Murcielago.neon.magenta.resplandeciente.png" alt="">
+    <img class="bat bat--three" src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/Murcielago.neon.magenta.resplandeciente.png" alt="">
+    <div class="candle-set candle-set--left"><span class="candle"></span><span class="candle"></span></div>
+    <div class="candle-set candle-set--right"><span class="candle"></span><span class="candle"></span></div>
+</div>
+
+<div class="envelope-overlay" id="envelopeOverlay" role="dialog" aria-modal="true" aria-labelledby="envelopeHeading">
+    <div class="envelope-invitation" id="envelopeInvitation">
+        <h1 class="envelope-heading" id="envelopeHeading">UNA NOCHE DE HALLOWEEN</h1>
+        <button class="envelope-trigger" id="envelopeTrigger" type="button" aria-label="Abrir invitación y comenzar la música">
+            <span class="envelope-art" aria-hidden="true">
+                <span class="envelope-paper">
+                    <span>MAXIMILIANO</span>
+                    <span>31 · 10 · 26</span>
+                </span>
+                <span class="envelope-flap"></span>
+                <span class="envelope-pocket"></span>
+                <img class="envelope-seal" src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/Calabaza.de.Halloween.luminosa.con.tallo.rizado.png" alt="">
+            </span>
+        </button>
+    </div>
+</div>
+
+<div class="container" id="invitationContent" aria-hidden="true" inert>
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="invited">
+ESTÁS INVITADO
+</div>
+
+<div class="name">
+MAXIMILIANO
+</div>
+
+<div class="gold-line"></div>
+
+<!-- =========================================
+     FOTO
+========================================= -->
+
+<div class="photo-frame">
+
+<img src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/foto1.jpg"
+alt="Maximiliano">
+
+</div>
+
+<div class="invitation-message">
+<p>ESTÁS INVITADO A MI FIESTA DE HALLOWEEN</p>
+<span>TRAÉ TU DISFRAZ PARA ESTA NOCHE</span>
+</div>
+
+<!-- =========================================
+     PLAYER
+========================================= -->
+
+<div class="player">
+
+  <div class="audio-player">
+
+    <div class="controls">
+
+      <!-- RETROCEDER -->
+
+      <button class="skip-btn" onclick="skip(-10)">
+
+        <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/rewind.png"
+        alt="Rewind">
+
+      </button>
+
+      <!-- PLAY -->
+
+      <button class="play-pause-btn"
+      onclick="togglePlayPause()">
+
+        <img
+        id="playPauseIcon"
+
+        src="https://img.icons8.com/ios-filled/50/000000/play.png"
+
+        alt="Play">
+
+      </button>
+
+      <!-- ADELANTAR -->
+
+      <button class="skip-btn"
+      onclick="skip(10)">
+
+        <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/fast-forward.png"
+        alt="Forward">
+
+      </button>
+
+    </div>
+
+    <!-- BARRA -->
+
+    <div class="progress-container"
+    onclick="setProgress(event)">
+
+      <div class="progress"
+      id="progress"></div>
+
+      <div class="progress-indicator"
+      id="progress-indicator"></div>
+
+    </div>
+
+    <!-- TIEMPO -->
+
+    <div class="time-info">
+
+      <span id="current-time">
+        00:00
+      </span>
+
+      /
+
+      <span id="duration">
+        00:00
+      </span>
+
+    </div>
+
+    <p class="audio-status" id="audioStatus" aria-live="polite"></p>
+
+    <!-- AUDIO -->
+
+    <audio id="audio"
+    preload="none"
+    loop>
+
+      <source
+      src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/Bam.Bam.x.Kay.Sera.Sera.Jay.n.Tonic.Remix.HUGEL.A.R.Rahman.mp3"
+
+      type="audio/mp4">
+
+      Tu navegador no soporta audio.
+
+    </audio>
+
+  </div>
+
+</div>
+
+<!-- =========================================
+     COUNTDOWN
+========================================= -->
+
+<div class="section">
+
+<div class="gold-line"></div>
+
+<div class="section-title">
+31 · 10 · 26
+</div>
+
+<div class="section-sub">
+¿CUÁNTO FALTA?
+</div>
+
+<div class="countdown">
+
+<div class="time-box">
+<div class="time-inner">
+<div class="time-number" id="days">00</div>
+<div class="time-label">DÍAS</div>
+</div>
+</div>
+
+<div class="time-box">
+<div class="time-inner">
+<div class="time-number" id="hours">00</div>
+<div class="time-label">HORAS</div>
+</div>
+</div>
+
+<div class="time-box">
+<div class="time-inner">
+<div class="time-number" id="minutes">00</div>
+<div class="time-label">MIN</div>
+</div>
+</div>
+
+<div class="time-box">
+<div class="time-inner">
+<div class="time-number" id="seconds">00</div>
+<div class="time-label">SEG</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================
+     FIESTA
+========================================= -->
+
+<div class="section">
+
+<div class="section-title">
+<span class="section-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>
+</span>
+FIESTA
+</div>
+
+<div class="info">
+
+22:00 HS<br><br>
+
+Calle Alfonso XIII entre calle 13 y 14, Rawson<br><br>
+
+</div>
+
+<p style="color:#ff8bd8; font-size:18px; margin:25px 0; font-weight:600;">
+ IMPORTANTE: Traer hielera en mano · Fiesta sin niños
+</p>
+
+<a class="gold-btn"
+href="https://maps.app.goo.gl/YCggYSuXyaNLuYQ69">
+
+¿CÓMO LLEGAR?
+
+</a>
+
+</div>
+
+
+<!-- =========================================
+     CONFIRMACION
+========================================= -->
+
+<div class="section">
+
+<div class="section-title">
+<span class="section-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><path d="M16 2h-4l-1-1h-2a2 2 0 00-2 2v2H4v18h16V4a2 2 0 00-2-2zm0 18H6V6h2v2h8V6h2v14zm-5-4l5-5-1.4-1.4L11 13.2 9.4 11.6 8 13l3 3z"/></svg>
+</span>
+CONFIRMÁ TU ASISTENCIA
+</div>
+
+<div class="section-sub">
+Ayudanos a organizar mejor la noche
+</div>
+
+<a class="gold-btn"
+href="https://wa.link/962gqr"
+target="_blank">
+
+CONFIRMAR ASISTENCIA
+
+</a>
+
+</div>
+
+<!-- =========================================
+     CARRUSEL DE FOTOS
+========================================= -->
+
+<div class="section">
+
+    <div class="section-title">
+<span class="section-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><path d="M20 5h-3.2l-1.8-2H8L6.2 5H3a2 2 0 00-2 2v12a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2zm-8 14a5 5 0 115-5 5 5 0 01-5 5z"/></svg>
+</span>
+        RECUERDOS DE HALLOWEEN
+    </div>
+
+    <div class="section-sub">
+        Deslizá para recorrer las fotos
+    </div>
+
+    <div class="photo-carousel" data-carousel>
+        <div class="carousel-frame">
+            <div class="carousel-track" id="photoCarousel" tabindex="0" aria-label="Galería de fotos de Halloween. Deslizá para recorrer las imágenes.">
+                <figure class="carousel-slide">
+                    <img src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/2.jpg" alt="Imagen de la galería de Halloween" loading="lazy" decoding="async" draggable="false">
+                </figure>
+                <figure class="carousel-slide carousel-slide--portrait">
+                    <img src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/3.jpg" alt="Retrato en la galería de Halloween" loading="lazy" decoding="async" draggable="false">
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/4.jpg" alt="Imagen de la galería de Halloween" loading="lazy" decoding="async" draggable="false">
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/5.jpg" alt="Imagen de la galería de Halloween" loading="lazy" decoding="async" draggable="false">
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/6.jpg" alt="Imagen de la galería de Halloween" loading="lazy" decoding="async" draggable="false">
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="https://github.com/Estas-Invitado0/maxi-mi-cumple/releases/download/cosas/7.jpg" alt="Imagen de la galería de Halloween" loading="lazy" decoding="async" draggable="false">
+                </figure>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- =========================================
+     PLAYLIST
+========================================= -->
+
+<div class="section">
+
+<div class="section-title">
+<span class="section-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03zm2.5 0c0 2.5-1.5 4.65-3.75 5.5v-2.08c1.17-.74 1.95-2.04 1.95-3.42s-.78-2.68-1.95-3.42V6.5C18.5 7.35 20 9.5 20 12z"/></svg>
+</span>
+
+NO HAY FIESTA<br>
+SIN BUENA MÚSICA
+
+</div>
+
+<div class="section-sub">
+
+¿QUÉ CANCIÓN NO PUEDE FALTAR?
+
+</div>
+
+<a class="gold-btn"
+href="https://forms.gle/28N9oUiYT9qSvrm66"
+target="_blank">
+
+RECOMENDAR
+
+</a>
+
+</div>
+
+<!-- =========================================
+     DETALLES DE LA NOCHE
+========================================= -->
+
+<div class="section">
+
+<div class="section-title">
+<span class="section-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><path d="M20 12v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8h16zm0-2H4V8a2 2 0 012-2h3.5l1 2H14l1-2H18a2 2 0 012 2v2zm-8-1.5L10.5 6H12l1.5 2.5L15 6h1.5L14 8.5 12 10 10.5 8.5z"/></svg>
+</span>
+NOCHE SOLO PARA ADULTOS
+</div>
+
+<div class="section-sub">
+Una noche para disfrutar entre grandes
+</div>
+
+<div class="info">
+Venite con tu disfraz y preparate para celebrar Halloween hasta la madrugada.
+</div>
+
+</div>
+
+<!-- =========================================
+     FINAL
+========================================= -->
+
+<div class="final">
+
+<div class="gold-line"></div>
+
+<div class="section-title">
+¡LOS ESPERO!
+</div>
+
+PARA FESTEJAR<br>
+UNA GRAN NOCHE JUNTOS!
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+const eventDate =
+new Date(2026,9,31,22,0,0);
+
+function updateCountdown(){
+
+const now = new Date();
+
+const diff = eventDate - now;
+
+const days =
+Math.floor(diff / (1000*60*60*24));
+
+const hours =
+Math.floor((diff / (1000*60*60)) % 24);
+
+const minutes =
+Math.floor((diff / 1000 / 60) % 60);
+
+const seconds =
+Math.floor((diff / 1000) % 60);
+
+document.getElementById("days")
+.innerText =
+String(days).padStart(2,"0");
+
+document.getElementById("hours")
+.innerText =
+String(hours).padStart(2,"0");
+
+document.getElementById("minutes")
+.innerText =
+String(minutes).padStart(2,"0");
+
+document.getElementById("seconds")
+.innerText =
+String(seconds).padStart(2,"0");
+
+}
+
+setInterval(updateCountdown,1000);
+
+updateCountdown();
+
+/* =========================================
+   PLAYER
+========================================= */
+
+const audio =
+document.getElementById('audio');
+
+const playPauseIcon =
+document.getElementById('playPauseIcon');
+
+const audioStatus =
+document.getElementById('audioStatus');
+
+const envelopeOverlay =
+document.getElementById('envelopeOverlay');
+
+const envelopeInvitation =
+document.getElementById('envelopeInvitation');
+
+const envelopeTrigger =
+document.getElementById('envelopeTrigger');
+
+const progressContainer =
+document.querySelector('.progress-container');
+
+const progress =
+document.getElementById('progress');
+
+const progressIndicator =
+document.getElementById('progress-indicator');
+
+const currentTimeEl =
+document.getElementById('current-time');
+
+const durationEl =
+document.getElementById('duration');
+
+function togglePlayPause() {
+
+  if(audio.paused){
+
+    const playback = audio.play();
+    playback.catch(() => {
+      audioStatus.textContent = 'No se pudo iniciar la música. Revisá la conexión e intentá reproducirla de nuevo.';
+    });
+
+  } else {
+
+    audio.pause();
+
+  }
+
+}
+
+audio.addEventListener('play', () => {
+  playPauseIcon.src = "https://img.icons8.com/ios-filled/50/000000/pause.png";
+  audioStatus.textContent = '';
+});
+
+audio.addEventListener('pause', () => {
+  playPauseIcon.src = "https://img.icons8.com/ios-filled/50/000000/play.png";
+});
+
+audio.addEventListener('error', () => {
+  audioStatus.textContent = 'No se pudo cargar la música. Revisá la conexión o intentá reproducirla más tarde.';
+});
+
+envelopeTrigger.addEventListener('click', () => {
+  envelopeTrigger.disabled = true;
+  envelopeInvitation.classList.add('opening');
+  document.getElementById('invitationContent').classList.add('is-revealed');
+  document.body.classList.add('invitation-locked');
+
+  const playback = audio.play();
+  playback.catch(() => {
+    audioStatus.textContent = 'La invitación se abrió, pero no se pudo iniciar la música. Usá el botón de reproducción para intentarlo.';
+  });
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.setTimeout(() => {
+    envelopeOverlay.remove();
+    document.body.classList.remove('invitation-locked');
+    const invitationContent = document.getElementById('invitationContent');
+    invitationContent.removeAttribute('aria-hidden');
+    invitationContent.removeAttribute('inert');
+    document.querySelector('.play-pause-btn').focus({ preventScroll: true });
+  }, reducedMotion ? 50 : 1400);
+});
+
+audio.onloadedmetadata = function(){
+
+  durationEl.textContent =
+  formatTime(audio.duration);
+
+};
+
+audio.ontimeupdate = function(){
+
+  currentTimeEl.textContent =
+  formatTime(audio.currentTime);
+
+  const progressPercent =
+  (audio.currentTime / audio.duration) * 100;
+
+  progress.style.width =
+  `${progressPercent}%`;
+
+  progressIndicator.style.left =
+  `calc(${progressPercent}% - 7px)`;
+
+};
+
+function setProgress(event){
+
+  const width =
+  progressContainer.clientWidth;
+
+  const clickX =
+  event.offsetX;
+
+  audio.currentTime =
+  (clickX / width) * audio.duration;
+
+}
+
+function skip(seconds){
+
+  audio.currentTime =
+  Math.min(
+    Math.max(
+      0,
+      audio.currentTime + seconds
+    ),
+    audio.duration
+  );
+
+}
+
+function formatTime(seconds){
+
+  const minutes =
+  Math.floor(seconds / 60);
+
+  const secs =
+  Math.floor(seconds % 60);
+
+  return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+
+}
+
+const photoCarousel =
+document.querySelector('[data-carousel]');
+
+if (photoCarousel) {
+  const carouselTrack = photoCarousel.querySelector('.carousel-track');
+  const carouselSlides = [...carouselTrack.querySelectorAll('.carousel-slide')];
+  const firstClone = carouselSlides[0].cloneNode(true);
+  const lastClone = carouselSlides[carouselSlides.length - 1].cloneNode(true);
+  let carouselSettleTimer = 0;
+  let snapRestoreTimer = 0;
+  let activeCarouselIndex = 0;
+
+  [firstClone, lastClone].forEach((clone) => {
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelector('img').alt = '';
+  });
+
+  carouselTrack.prepend(lastClone);
+  carouselTrack.append(firstClone);
+  carouselTrack.scrollLeft = carouselTrack.clientWidth;
+
+  const jumpToSlide = (index) => {
+    window.clearTimeout(snapRestoreTimer);
+    carouselTrack.style.scrollSnapType = 'none';
+    carouselTrack.scrollLeft = index * carouselTrack.clientWidth;
+    snapRestoreTimer = window.setTimeout(() => {
+      carouselTrack.style.scrollSnapType = '';
+    }, 50);
+  };
+
+  const settleCarousel = () => {
+    window.clearTimeout(carouselSettleTimer);
+    const slideWidth = carouselTrack.clientWidth;
+    if (!slideWidth) return;
+
+    const slideIndex = Math.round(carouselTrack.scrollLeft / slideWidth);
+
+    if (slideIndex === 0) {
+      activeCarouselIndex = carouselSlides.length - 1;
+      jumpToSlide(carouselSlides.length);
+    } else if (slideIndex === carouselSlides.length + 1) {
+      activeCarouselIndex = 0;
+      jumpToSlide(1);
+    } else {
+      activeCarouselIndex = slideIndex - 1;
+    }
+  };
+
+  const goToPhoto = (index) => {
+    activeCarouselIndex = (index + carouselSlides.length) % carouselSlides.length;
+    carouselTrack.scrollTo({
+      left: (activeCarouselIndex + 1) * carouselTrack.clientWidth,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  };
+
+  carouselTrack.addEventListener('scroll', () => {
+    window.clearTimeout(carouselSettleTimer);
+    carouselSettleTimer = window.setTimeout(settleCarousel, 150);
+  }, { passive: true });
+
+  carouselTrack.addEventListener('scrollend', settleCarousel);
+
+  carouselTrack.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      goToPhoto(activeCarouselIndex + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    jumpToSlide(activeCarouselIndex + 1);
+  });
+}
+
+const sectionIcons =
+document.querySelectorAll('.section-icon');
+
+const iconObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.35,
+});
+
+sectionIcons.forEach((icon) => {
+  iconObserver.observe(icon);
+  icon.addEventListener('pointerenter', () => {
+    icon.classList.add('animate');
+  });
+  icon.addEventListener('animationend', () => {
+    icon.classList.remove('animate');
+  });
+});
+
+</script>
+
+</body>
+</html>
